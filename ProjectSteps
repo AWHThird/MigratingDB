@@ -1,0 +1,4 @@
+v0 I have a block of Employee info I need to store.
+v1 Some data is aggregated when it shouldn't be.
+v2 The job information is separate from the Employee information.
+v3 Really each job belongs to a department, and the employee can float amongst these.
