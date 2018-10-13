@@ -36,7 +36,7 @@ CREATE TABLE dbo.[Employee] (
   ,[CellPhone] VARCHAR(32) NULL
   ,[StartDate] DateTime2(0) NOT NULL
   ,[EndDate] DateTime2(0) NULL
-  ,[Employed] BIT NULL
+  ,[IsEmployed] BIT NULL
 );
 GO
 
@@ -54,7 +54,7 @@ INSERT INTO dbo.Employee (
   ,[CellPhone]
   ,[StartDate]
   ,[EndDate]
-  ,[Employed]
+  ,[IsEmployed]
 )
 VALUES
 (
