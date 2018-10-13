@@ -44,3 +44,51 @@ GO
 ALTER TABLE dbo.[Employee]
 ADD CONSTRAINT PK_Employee_EmployeeId PRIMARY KEY CLUSTERED (EmployeeId);
 GO
+
+INSERT INTO dbo.Employee (
+  [EmployeeName]
+  ,[DepartmentName]
+  ,[JobTitle]
+  ,[HomeAddress]
+  ,[HomePhone]
+  ,[CellPhone]
+  ,[StartDate]
+  ,[EndDate]
+  ,[Employed]
+)
+VALUES
+(
+  'Alan Turing'
+  ,'Research and Development'
+  ,'Director of Mathematical Computer Sciences'
+  ,'96 Euston Road, London NW1 2DB'
+  ,'+44 (0)300 770 1912'
+  ,NULL
+  ,'1954-06-07 00:00:00'
+  ,NULL
+  ,1
+)
+,
+(
+  'Grace Hopper'
+  ,'Research and Development'
+  ,'Head Software Systems Architech'
+  ,'1001 Avenida de las Americas Houston, Texas  77010'
+  ,'(650) 352-7500'
+  ,NULL
+  ,'1980-01-07 00:00:00'
+  ,NULL
+  ,1
+)
+,
+(
+  'Bob'
+  ,'Adminstration'
+  ,'CEO'
+  ,'Earth'
+  ,'867-5309'
+  ,NULL
+  ,'1900-01-07 00:00:00'
+  ,NULL
+  ,1
+);
