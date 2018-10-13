@@ -118,4 +118,4 @@ FROM
 GO
 
 --Test that it calls
-EXEC dbo.[GetEmployees];
+-- EXEC dbo.[spGetEmployees];
