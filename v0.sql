@@ -119,3 +119,69 @@ GO
 
 --Test that it calls
 -- EXEC dbo.[spGetEmployees];
+
+--If it exists drop Stored Procedure dbo.spCreateEmployee
+DROP PROCEDURE IF EXISTS dbo.[spCreateEmployee];
+GO
+
+--Create Stored Procedure dbo.spCreateEmployee
+CREATE PROCEDURE dbo.[spCreateEmployee]
+  @EmployeeName VARCHAR(256)
+  ,@DepartmentName VARCHAR(256) = 'TBD'
+  ,@JobTitle VARCHAR(256) = 'TBD'
+  ,@HomeAddress VARCHAR(256)
+  ,@HomePhone VARCHAR(32)
+  ,@CellPhone VARCHAR(32) = NULL
+  ,@StartDate DateTime2(0) = NULL
+  ,@IsEmployed BIT
+AS
+  IF @StartDate IS NULL
+  SET @StartDate = GETDATE();
+
+  BEGIN TRAN
+    INSERT INTO dbo.Employee (
+      [EmployeeName]
+      ,[DepartmentName]
+      ,[JobTitle]
+      ,[HomeAddress]
+      ,[HomePhone]
+      ,[CellPhone]
+      ,[StartDate]
+      ,[IsEmployed]
+    )
+    VALUES
+    (
+      @EmployeeName
+      ,@DepartmentName
+      ,@JobTitle
+      ,@HomeAddress
+      ,@HomePhone
+      ,@CellPhone
+      ,@StartDate
+      ,@IsEmployed
+    );
+  COMMIT TRAN
+GO
+
+--Test that it calls
+EXEC dbo.[spCreateEmployee] 
+  @EmployeeName = 'me'
+  ,@HomeAddress = 'Mr Rodger''s Neighborhood'
+  ,@HomePhone = '000-000-0000'
+  ,@IsEmployed = 1
+;
+
+SELECT * FROM dbo.Employee;
+
+EXEC dbo.[spCreateEmployee] 
+  @EmployeeName = 'you'
+  ,@HomeAddress = 'The Darkside of the Moon'
+  ,@HomePhone = '515-515-1515'
+  ,@IsEmployed = 1
+  ,@DepartmentName = 'Management'
+  ,@JobTitle = 'BossPerson'
+  ,@CellPhone = '515-515-1515'
+  ,@StartDate = '2018-10-13 00:35:23'
+;
+
+SELECT * FROM dbo.Employee;
