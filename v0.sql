@@ -95,11 +95,11 @@ VALUES
 GO
 
 --If it exists drop Stored Procedure dbo.GetEmployees
-DROP PROCEDURE IF EXISTS dbo.[GetEmployees];
+DROP PROCEDURE IF EXISTS dbo.[spGetEmployees];
 GO
 
 --Create Stored Procedure dbo.GetEmployees
-CREATE PROCEDURE dbo.[GetEmployees]
+CREATE PROCEDURE dbo.[spGetEmployees]
 AS
 SELECT
   [EmployeeId]
