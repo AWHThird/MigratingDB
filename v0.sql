@@ -36,7 +36,7 @@ CREATE TABLE dbo.[Employee] (
   ,[CellPhone] VARCHAR(32) NULL
   ,[StartDate] DateTime2(0) NOT NULL
   ,[EndDate] DateTime2(0) NULL
-  ,[Employed] BIT NULL
+  ,[IsEmployed] BIT NULL
 );
 GO
 
@@ -54,7 +54,7 @@ INSERT INTO dbo.Employee (
   ,[CellPhone]
   ,[StartDate]
   ,[EndDate]
-  ,[Employed]
+  ,[IsEmployed]
 )
 VALUES
 (
@@ -92,3 +92,30 @@ VALUES
   ,NULL
   ,1
 );
+GO
+
+--If it exists drop Stored Procedure dbo.GetEmployees
+DROP PROCEDURE IF EXISTS dbo.[GetEmployees];
+GO
+
+--Create Stored Procedure dbo.GetEmployees
+CREATE PROCEDURE dbo.[GetEmployees]
+AS
+SELECT
+  [EmployeeId]
+  ,[EmployeeName]
+  ,[DepartmentName]
+  ,[JobTitle]
+  ,[HomeAddress]
+  ,[HomePhone]
+  ,[CellPhone]
+  ,[StartDate]
+  ,[EndDate]
+  ,[IsEmployed]
+FROM
+  dbo.Employee
+;
+GO
+
+--Test that it calls
+EXEC dbo.[GetEmployees];
